@@ -4,16 +4,26 @@ import fetchHeroes from "asynchronous-actions/fetchHeroes";
 const SuperHeroesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    fetchHeroes().then((res) => {
-      setData(res.data);
-      setIsLoading(false);
-    });
+    fetchHeroes()
+      .then((res) => {
+        setData(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setIsLoading(false);
+      });
   }, []);
 
   if (isLoading) {
     return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
   }
 
   return (

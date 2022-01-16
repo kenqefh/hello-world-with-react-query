@@ -3,11 +3,15 @@ import fetchHeroes from "asynchronous-actions/fetchHeroes";
 
 const RQSuperHeroesPage = () => {
   const results = useQuery("super-heroes", fetchHeroes);
-  const { isLoading, data } = results;
+  const { isLoading, data, isError, error } = results;
   console.log(results);
 
   if (isLoading) {
     return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>{error.message}</p>;
   }
 
   return (
