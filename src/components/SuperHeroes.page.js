@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import fetchHeroes from "asynchronous-actions/fetchHeroes";
 
-const SuperHeroesPage = (props) => {
+const SuperHeroesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/superheroes").then((res) => {
+    fetchHeroes().then((res) => {
       setData(res.data);
       setIsLoading(false);
     });
