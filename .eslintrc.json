@@ -31,6 +31,6 @@
     "react-hooks/exhaustive-deps": "off",
     "react/no-unescaped-entities": "off",
     "semi": [2, "always"],
-    "requireConfigFile": false
+    "requireConfigFile": 0
   }
 }
